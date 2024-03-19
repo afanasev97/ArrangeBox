@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arrange Box</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<script src="./scripts/app.js" defer></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="arrange-box">
+			<div class="box left">
+				<div class="panel actions">
+					<button>
+						<img src="./src/images/add.svg" alt="Add">
+					</button>
+					<button>
+						<img src="./src/images/arrow-top.svg" alt="Move Top">
+					</button>
+					<button>
+						<img src="./src/images/arrow-up.svg" alt="Move Up">
+					</button>
+					<button>
+						<img src="./src/images/arrow-down.svg" alt="Move Down">
+					</button>
+					<button>
+						<img src="./src/images/arrow-bottom.svg" alt="Move Bottom">
+					</button>
+				</div>
+				<div class="list">
+					<div class="list-name">Available</div>
+					<div class="search">
+						<input type="text" placeholder="Search by name..." class="search-input">
+					</div>
+					<ul class="list-items" id="available">
+						<li class='item' onclick='this.classList.toggle("selected")'>Item 1</li>
+						<li class='item' onclick='this.classList.toggle("selected")'>Item 2</li>
+						<li class='item' onclick='this.classList.toggle("selected")'>Item 3</li>
+						<li class='item' onclick='this.classList.toggle("selected")'>Item 4</li>
+						<li class='item' onclick='this.classList.toggle("selected")'>Item 5</li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel center">
+				<button>
+					<img src="./src/images/arrow-right.svg" alt="Move Right">
+				</button>
+				<button>
+					<img src="./src/images/arrow-double-right.svg" alt="Move Right All">
+				</button>
+				<button>
+					<img src="./src/images/arrow-left.svg" alt="Move Left">
+				</button>
+				<button>
+					<img src="./src/images/arrow-double-left.svg" alt="Move Left All">
+				</button>
+				<button>
+					<img src="./src/images/settings.svg" alt="Settings">
+				</button>
+			</div>
+			<div class="box right">
+				<div class="panel actions">
+					<button>
+						<img src="./src/images/add.svg" alt="Add">
+					</button>
+					<button>
+						<img src="./src/images/arrow-top.svg" alt="Move Top">
+					</button>
+					<button>
+						<img src="./src/images/arrow-up.svg" alt="Move Up">
+					</button>
+					<button>
+						<img src="./src/images/arrow-down.svg" alt="Move Down">
+					</button>
+					<button>
+						<img src="./src/images/arrow-bottom.svg" alt="Move Bottom">
+					</button>
+				</div>
+				<div class="list">
+					<div class="list-name">Selected</div>
+					<div class="search">
+						<input type="text" placeholder="Search..." class="search-input">
+					</div>
+					<ul class="list-items" id="selected">
+					</ul>
+				</div>
+			</div>
+			<div class="settings">
+				<button>Available control value</button>
+				<button>New Control</button>
+				<button>Selected control value</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
