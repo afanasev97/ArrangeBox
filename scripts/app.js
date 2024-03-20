@@ -29,7 +29,7 @@ class ArrangeBox {
 	#init() {
 		this.availableList = this.#createListItems("available", this.availableListInitValues);
 		this.selectedList = this.#createListItems("selected");
-		this.control = this.createControl();
+		this.control = this.#createControl();
 
 		this.control.querySelector('.left').appendChild(this.#createPanelActions(this.availableList));
 		this.control.querySelector('.left').appendChild(this.#createList('Available', this.availableList));
@@ -37,10 +37,10 @@ class ArrangeBox {
 		this.control.querySelector('.right').appendChild(this.#createList('Selected', this.selectedList));
 
 		this.documentContainer.appendChild(this.control);
-		this.toggleAllButtons();
+		this.#toggleAllButtons();
 	}
 
-	createControl() {
+	#createControl() {
 		const container = document.createElement('div');
 		container.classList.add('arrange-box');
 
@@ -48,7 +48,7 @@ class ArrangeBox {
 		left.classList.add('box', 'left');
 		container.appendChild(left);
 
-		const center = this.createCentralPanel();
+		const center = this.#createCentralPanel();
 		container.appendChild(center);
 
 		const right = document.createElement('div');
@@ -61,7 +61,7 @@ class ArrangeBox {
 		return container;
 	}
 
-	createCentralPanel() {
+	#createCentralPanel() {
 		const centerElement = document.createElement('div');
 		const moveRightButton = document.createElement('button');
 		const moveRightAllButton = document.createElement('button');
@@ -81,25 +81,25 @@ class ArrangeBox {
 			this.availableListLiElements.filter(item => item.classList.contains('selected')).forEach(item => {
 				this.selectedList.appendChild(item);
 			});
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 		moveRightAllButton.addEventListener('click', () => {
 			this.availableListLiElements.forEach(item => {
 				this.selectedList.appendChild(item);
 			});
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 		moveLeftButton.addEventListener('click', () => {
 			this.selectedListLiElements.filter(item => item.classList.contains('selected')).forEach(item => {
 				this.availableList.appendChild(item);
 			});
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 		moveLeftAllButton.addEventListener('click', () => {
 			this.selectedListLiElements.forEach(item => {
 				this.availableList.appendChild(item);
 			});
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 		settingsButton.addEventListener('click', () => this.#showSettings());
 
@@ -173,7 +173,7 @@ class ArrangeBox {
 			Array.from(targetList.querySelectorAll(".selected")).reverse().forEach(item => {
 				targetList.insertBefore(item, targetList.firstChild);
 			})
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 
 		moveUpButton.addEventListener('click', () => {
@@ -183,7 +183,7 @@ class ArrangeBox {
 					targetList.insertBefore(item, prevSibling);
 				}
 			})
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 
 		moveDownButton.addEventListener('click', () => {
@@ -193,14 +193,14 @@ class ArrangeBox {
 					targetList.insertBefore(nextSibling, item);
 				}
 			})
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 
 		moveBottomButton.addEventListener('click', () => {
 			targetList.querySelectorAll(".selected").forEach(item => {
 				targetList.append(item);
 			})
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 
 		panelActionsElement.appendChild(addButton);
@@ -263,7 +263,7 @@ class ArrangeBox {
 		liElement.classList.add('item');
 		liElement.addEventListener('click', () => {
 			liElement.classList.toggle('selected');
-			this.toggleAllButtons();
+			this.#toggleAllButtons();
 		});
 		return liElement;
 	}
@@ -272,7 +272,7 @@ class ArrangeBox {
 		this.control.querySelector('.settings').classList.toggle('hidden');
 	}
 
-	toggleAllButtons() {
+	#toggleAllButtons() {
 		const leftButtons = Array.from(this.control.querySelector('.left').querySelectorAll("button:not(:first-Child)"));
 		const rightButtons = Array.from(this.control.querySelector('.right').querySelectorAll("button:not(:first-Child)"));
 		const centerButtons = Array.from(this.control.querySelector('.center').querySelectorAll("button:not(:last-Child)"));
